@@ -18,22 +18,14 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
-    options: FirebaseOptions(
-      apiKey: "AIzaSyCuCjsAonzEFKfdT6RueEnvo8C-it97hqA",
-      authDomain: "novel-app-1.firebaseapp.com",
-      projectId: "novel-app-1",
-      storageBucket: "novel-app-1.appspot.com",
-      messagingSenderId: "639413996910",
-      appId: "1:639413996910:web:e7992c7f27f5dc86df457f",
-
-      // apiKey: "AIzaSyAM9Fzs_tKzRYf2RoR1VRcpQvyKRO3-m0Y",
-      // authDomain: "novel-c00ac.firebaseapp.com",
-      // projectId: "novel-c00ac",
-      // storageBucket: "novel-c00ac.appspot.com",
-      // messagingSenderId: "277214592930",
-      // appId: "1:277214592930:web:769293a04d64a2e01afcfb",
-      // measurementId: "G-K8Z4653NGM",
-    ),
+    options: const FirebaseOptions(
+        apiKey: "AIzaSyBNnu0cZqKT8Tx4rTjMRNHmgRJOPmjAaPE",
+        authDomain: "novel-app-f1572.firebaseapp.com",
+        projectId: "novel-app-f1572",
+        storageBucket: "novel-app-f1572.appspot.com",
+        messagingSenderId: "521139126077",
+        appId: "1:521139126077:web:ca6acb277d1e785b800f54",
+        measurementId: "G-Q5EYTB38B9"),
   );
   runApp(MultiProvider(
     providers: [

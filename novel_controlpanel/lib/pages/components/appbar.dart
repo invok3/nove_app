@@ -32,6 +32,48 @@ class _MyAppBarState extends State<MyAppBar> {
       actions: [
         PopupMenuButton<int>(
           tooltip: "خيارات",
+          itemBuilder: (context) => [
+            PopupMenuItem(
+                value: 0,
+                child: Row(
+                  children: [
+                    Text("الملف الشخصي"),
+                    Spacer(),
+                    Icon(
+                      Icons.person,
+                      color: Colors.grey,
+                    )
+                  ],
+                )),
+            PopupMenuItem(
+                value: 1,
+                child: Row(
+                  children: [
+                    Text("تسجيل خروج"),
+                    Spacer(),
+                    Icon(
+                      Icons.logout,
+                      color: Colors.grey,
+                    )
+                  ],
+                )),
+          ],
+          onSelected: (x) async {
+            if (x == 1) {
+              await FirebaseAuth.instance.signOut();
+              if (!mounted) {
+                return;
+              }
+              Navigator.of(context).pushReplacementNamed("/");
+            }
+            if (x == 0) {
+              if (!mounted) {
+                return;
+              }
+              Navigator.pushReplacementNamed(context, ProfileTab.routeName);
+            }
+          },
+          elevation: 0,
           child: isProtrait
               ? null
               : Row(
@@ -55,42 +97,6 @@ class _MyAppBarState extends State<MyAppBar> {
                     SizedBox(width: 8),
                   ],
                 ),
-          itemBuilder: (context) => [
-            PopupMenuItem(
-                child: Row(
-                  children: [
-                    Text("الملف الشخصي"),
-                    Spacer(),
-                    Icon(
-                      Icons.person,
-                      color: Colors.grey,
-                    )
-                  ],
-                ),
-                value: 0),
-            PopupMenuItem(
-                child: Row(
-                  children: [
-                    Text("تسجيل خروج"),
-                    Spacer(),
-                    Icon(
-                      Icons.logout,
-                      color: Colors.grey,
-                    )
-                  ],
-                ),
-                value: 1),
-          ],
-          onSelected: (x) async {
-            if (x == 1) {
-              await FirebaseAuth.instance.signOut();
-              Navigator.of(context).pushReplacementNamed("/");
-            }
-            if (x == 0) {
-              Navigator.pushReplacementNamed(context, ProfileTab.routeName);
-            }
-          },
-          elevation: 0,
         ),
       ],
     );

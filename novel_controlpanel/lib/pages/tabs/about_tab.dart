@@ -61,7 +61,7 @@ class _AboutTabState extends State<AboutTab> {
                         border: Border.all(width: 1, color: Colors.grey),
                         borderRadius: BorderRadius.circular(4)),
                     child: quill.QuillEditor(
-                      embedBuilder: (context, controller, node, readOnly) {
+                      embedBuilder: (context, controller, node, readOnly, _) {
                         debugPrint(node.value.data.toString());
                         //return ScaleableImage(src: node.value.data);
                         return Image.network(
@@ -144,6 +144,9 @@ class _AboutTabState extends State<AboutTab> {
         _error = "حدث خطأ أثناء الإتصال بقاعدة البيانات";
       });
     } else {
+      if (!mounted) {
+        return;
+      }
       Navigator.pop(context);
     }
   }

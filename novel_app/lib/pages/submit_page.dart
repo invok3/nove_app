@@ -14,7 +14,7 @@ class SubmitPage extends StatefulWidget {
 }
 
 class _SubmitPageState extends State<SubmitPage> {
-  InputDecoration mDecoration = InputDecoration(
+  InputDecoration mDecoration = const InputDecoration(
       border: OutlineInputBorder(),
       contentPadding: EdgeInsets.symmetric(horizontal: 8, vertical: 0));
 
@@ -41,16 +41,16 @@ class _SubmitPageState extends State<SubmitPage> {
                       onPressed: () {
                         Navigator.pop(context);
                       },
-                      icon: Icon(Icons.arrow_back_ios)),
-                  Spacer(),
+                      icon: const Icon(Icons.arrow_back_ios)),
+                  const Spacer(),
                   Text(
                     Translator.of(context, "contactUsTitle"),
                     style: Theme.of(context).textTheme.titleLarge!.copyWith(
                         color:
                             Provider.of<ThemeProvider>(context).selectedColor),
                   ),
-                  Spacer(),
-                  IconButton(
+                  const Spacer(),
+                  const IconButton(
                       onPressed: null,
                       icon: Icon(
                         Icons.arrow_back_ios_new,
@@ -66,33 +66,33 @@ class _SubmitPageState extends State<SubmitPage> {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    SizedBox(height: 28),
+                    const SizedBox(height: 28),
                     TextField(
                         controller: nameController,
                         decoration: mDecoration.copyWith(
                             labelText: Translator.of(context, "nameLabel"))),
-                    SizedBox(height: 28),
+                    const SizedBox(height: 28),
                     TextField(
                         controller: emailController,
                         decoration: mDecoration.copyWith(
                             labelText: Translator.of(context, "emailLabel"))),
-                    SizedBox(height: 28),
+                    const SizedBox(height: 28),
                     TextField(
                         controller: subjectController,
                         decoration: mDecoration.copyWith(
                             labelText: Translator.of(context, "subjectLabel"))),
-                    SizedBox(height: 28),
+                    const SizedBox(height: 28),
                     TextField(
                       controller: contentController,
                       decoration: mDecoration,
                       maxLength: 500,
                       maxLines: 10,
                     ),
-                    SizedBox(height: 7),
+                    const SizedBox(height: 7),
                     ElevatedButton(
                         onPressed: () => _submit(),
                         child: Text(Translator.of(context, "sendBtn"))),
-                    SizedBox(height: 28),
+                    const SizedBox(height: 28),
                   ],
                 ),
               ),
@@ -145,7 +145,7 @@ class _SubmitPageState extends State<SubmitPage> {
                     if (snapshot.connectionState != ConnectionState.done) {
                       return Row(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
+                        children: const [
                           CircularProgressIndicator(),
                         ],
                       );

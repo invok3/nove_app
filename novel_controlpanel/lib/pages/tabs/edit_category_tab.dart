@@ -58,6 +58,8 @@ class _EditCategoryTabState extends State<EditCategoryTab> {
                             // shape: RoundedRectangleBorder(
                             //     borderRadius: BorderRadius.circular(8)),
                             clipBehavior: Clip.hardEdge,
+                            elevation: 10,
+                            color: Colors.white,
                             child: Image(
                                 image: NetworkImage(_imageLink),
                                 width: 500,
@@ -80,8 +82,6 @@ class _EditCategoryTabState extends State<EditCategoryTab> {
                                     fit: BoxFit.cover,
                                   );
                                 }),
-                            elevation: 10,
-                            color: Colors.white,
                           ),
                         ),
                       ),
@@ -190,6 +190,9 @@ class _EditCategoryTabState extends State<EditCategoryTab> {
         _error = "حدث خطأ أثناء الإتصال بقاعدة البيانات";
       });
     } else {
+      if (!mounted) {
+        return;
+      }
       Navigator.pop(context);
     }
   }

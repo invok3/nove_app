@@ -57,10 +57,13 @@ class _StoriesTabState extends State<StoriesTab> {
                       if (catID == null) {
                         return;
                       }
+                      if (!mounted) {
+                        return;
+                      }
                       Navigator.pushNamed(context, EditStoryTab.routeName,
-                          arguments: {"catID": catID}).then((value) {setState(() {
-                            
-                          });});
+                          arguments: {"catID": catID}).then((value) {
+                        setState(() {});
+                      });
                     },
                     label: Text(
                       "إضافة",
@@ -159,6 +162,7 @@ class _StoriesTabState extends State<StoriesTab> {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   title,
@@ -176,7 +180,6 @@ class _StoriesTabState extends State<StoriesTab> {
                   style: Theme.of(context).textTheme.caption,
                 ),
               ],
-              crossAxisAlignment: CrossAxisAlignment.start,
             ),
           ),
         ),
@@ -186,7 +189,8 @@ class _StoriesTabState extends State<StoriesTab> {
             InkWell(
                 borderRadius: BorderRadius.circular(100),
                 onTap: () {
-                  Navigator.pushNamed(context, PreviewPage.routeName, arguments: document);
+                  Navigator.pushNamed(context, PreviewPage.routeName,
+                      arguments: document);
                 },
                 child: Padding(
                   padding:
@@ -196,9 +200,17 @@ class _StoriesTabState extends State<StoriesTab> {
             InkWell(
                 borderRadius: BorderRadius.circular(100),
                 onTap: () {
-                  Navigator.of(context).pushNamed(EditStoryTab.routeName, arguments: {"id" : id, "catID" : catID,  "title" : title, "subtitle": subtitle, "document": document, "image": image}).then((value) {setState(() {
-                    
-                  });});
+                  Navigator.of(context)
+                      .pushNamed(EditStoryTab.routeName, arguments: {
+                    "id": id,
+                    "catID": catID,
+                    "title": title,
+                    "subtitle": subtitle,
+                    "document": document,
+                    "image": image
+                  }).then((value) {
+                    setState(() {});
+                  });
                 },
                 child: Padding(
                   padding:
@@ -211,15 +223,23 @@ class _StoriesTabState extends State<StoriesTab> {
                   bool? confirmation = await showDialog(
                       context: context,
                       builder: (context) => AlertDialog(
-                        content: Text("حذف الحلقة, لا يمكن التراجع!"),
+                            content: Text("حذف الحلقة, لا يمكن التراجع!"),
                             actions: [
-                              TextButton(onPressed: () {Navigator.pop(context, true)}, child: Text("موافق")),
-                              TextButton(onPressed: () {Navigator.pop(context)}, child: Text("رجوع")),
+                              TextButton(
+                                  onPressed: () {
+                                    Navigator.pop(context, true);
+                                  },
+                                  child: Text("موافق")),
+                              TextButton(
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                  child: Text("رجوع")),
                             ],
                           ));
-                          if(confirmation != true) {
-                            return;
-                          }
+                  if (confirmation != true) {
+                    return;
+                  }
                   await FirebaseFirestore.instance
                       .collection("stories")
                       .doc(id)

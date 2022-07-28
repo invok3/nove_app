@@ -18,7 +18,7 @@ class StoryCard extends StatelessWidget {
       elevation: 20,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
       shadowColor: Provider.of<ThemeProvider>(context).selectedColor,
-      margin: EdgeInsets.symmetric(horizontal: 24, vertical: 8),
+      margin: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
       child: InkWell(
         onTap: () {
           Provider.of<Reading>(context, listen: false).setStoryID(e.id);
@@ -42,9 +42,10 @@ class StoryCard extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(width: 16),
+            const SizedBox(width: 16),
             Expanded(
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     e["title"],
@@ -60,7 +61,6 @@ class StoryCard extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                   ),
                 ],
-                crossAxisAlignment: CrossAxisAlignment.start,
               ),
             ),
             Column(

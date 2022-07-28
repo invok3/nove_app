@@ -17,11 +17,11 @@ class _StoriesPageState extends State<StoriesPage> {
   Widget build(BuildContext context) {
     return RefreshIndicator(
       child: Provider.of<ContentProvider>(context).content == false
-          ? Center(
+          ? const Center(
               child: CircularProgressIndicator(),
             )
           : SingleChildScrollView(
-              physics: AlwaysScrollableScrollPhysics(),
+              physics: const AlwaysScrollableScrollPhysics(),
               child: Provider.of<ContentProvider>(context).stories!.isEmpty
                   ? SizedBox(
                       height: MediaQuery.of(context).size.height -

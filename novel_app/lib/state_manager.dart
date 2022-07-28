@@ -42,7 +42,7 @@ class StateManagerState extends State<StateManager> {
                   iconColor: Provider.of<ThemeProvider>(context).selectedColor,
                   textColor: Provider.of<ThemeProvider>(context).selectedColor,
                   title: Text(Translator.of(context, "aboutAuthor")),
-                  leading: Icon(Icons.hail_outlined),
+                  leading: const Icon(Icons.hail_outlined),
                   onTap: () {
                     _key.currentState!.isDrawerOpen
                         ? Navigator.pop(context)
@@ -55,7 +55,7 @@ class StateManagerState extends State<StateManager> {
                   iconColor: Provider.of<ThemeProvider>(context).selectedColor,
                   textColor: Provider.of<ThemeProvider>(context).selectedColor,
                   title: Text(Translator.of(context, "chaptersLabel")),
-                  leading: Icon(Icons.book_outlined),
+                  leading: const Icon(Icons.book_outlined),
                   onTap: () {
                     _key.currentState!.isDrawerOpen
                         ? Navigator.pop(context)
@@ -68,7 +68,7 @@ class StateManagerState extends State<StateManager> {
                   iconColor: Provider.of<ThemeProvider>(context).selectedColor,
                   textColor: Provider.of<ThemeProvider>(context).selectedColor,
                   title: Text(Translator.of(context, "episodesLabel")),
-                  leading: Icon(Icons.menu_book_outlined),
+                  leading: const Icon(Icons.menu_book_outlined),
                   onTap: () {
                     _key.currentState!.isDrawerOpen
                         ? Navigator.pop(context)
@@ -82,7 +82,7 @@ class StateManagerState extends State<StateManager> {
                   iconColor: Provider.of<ThemeProvider>(context).selectedColor,
                   textColor: Provider.of<ThemeProvider>(context).selectedColor,
                   title: Text(Translator.of(context, "favoriteLabel")),
-                  leading: Icon(Icons.favorite_border),
+                  leading: const Icon(Icons.favorite_border),
                   onTap: () {
                     _key.currentState!.isDrawerOpen
                         ? Navigator.pop(context)
@@ -95,7 +95,7 @@ class StateManagerState extends State<StateManager> {
                   iconColor: Provider.of<ThemeProvider>(context).selectedColor,
                   textColor: Provider.of<ThemeProvider>(context).selectedColor,
                   title: Text(Translator.of(context, "bookmarkLabel")),
-                  leading: Icon(Icons.bookmark_border),
+                  leading: const Icon(Icons.bookmark_border),
                   onTap: () {
                     _key.currentState!.isDrawerOpen
                         ? Navigator.pop(context)
@@ -121,7 +121,7 @@ class StateManagerState extends State<StateManager> {
                   iconColor: Provider.of<ThemeProvider>(context).selectedColor,
                   textColor: Provider.of<ThemeProvider>(context).selectedColor,
                   title: Text(Translator.of(context, "Settings")),
-                  leading: Icon(Icons.settings_outlined),
+                  leading: const Icon(Icons.settings_outlined),
                   onTap: () {
                     _key.currentState!.isDrawerOpen
                         ? Navigator.pop(context)
@@ -146,30 +146,26 @@ class StateManagerState extends State<StateManager> {
                     onPressed: () {
                       _key.currentState!.openDrawer();
                     },
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.menu,
                     ),
                   ),
-                  Spacer(),
+                  const Spacer(),
                   IconButton(
                     onPressed: () {
                       Navigator.pushNamed(context, SettingsPage.routeName);
                     },
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.settings,
                     ),
                   ),
                 ],
               ),
             ),
-            Expanded(
-              child: tabs[selectedNavBarItem]["widget"],
-            )
+            Expanded(child: tabs[selectedNavBarItem]["widget"])
           ],
         ),
       ),
-      //Backup
-
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
           shape: BoxShape.rectangle,
@@ -179,11 +175,11 @@ class StateManagerState extends State<StateManager> {
                 color: Provider.of<ThemeProvider>(context).selectedColor,
                 blurRadius: 6,
                 spreadRadius: -2,
-                offset: Offset(0, 0))
+                offset: const Offset(0, 0))
           ],
           color: Theme.of(context).canvasColor,
         ),
-        margin: EdgeInsets.all(12),
+        margin: const EdgeInsets.all(12),
         clipBehavior: Clip.antiAlias,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -202,7 +198,7 @@ class StateManagerState extends State<StateManager> {
                               children: [
                                 Flexible(
                                   child: AnimatedContainer(
-                                    duration: Duration(milliseconds: 250),
+                                    duration: const Duration(milliseconds: 250),
                                     height: selectedNavBarItem == e['index']
                                         ? 4
                                         : 0,
@@ -260,7 +256,7 @@ class StateManagerState extends State<StateManager> {
             color: selectedNavBarItem == 1
                 ? Provider.of<ThemeProvider>(context).selectedColor
                 : Colors.grey),
-        "widget": StoriesPage(),
+        "widget": const StoriesPage(),
         "index": 1,
       },
       {
@@ -269,7 +265,7 @@ class StateManagerState extends State<StateManager> {
             color: selectedNavBarItem == 2
                 ? Provider.of<ThemeProvider>(context).selectedColor
                 : Colors.grey),
-        "widget": AboutPage(),
+        "widget": const AboutPage(),
         "index": 2,
       },
       {

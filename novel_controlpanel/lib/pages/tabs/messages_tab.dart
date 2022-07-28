@@ -210,6 +210,9 @@ class _MessagesTabState extends State<MessagesTab> {
         mList!.remove(item);
       }
     }
+    if (!mounted) {
+      return;
+    }
     Navigator.of(context).pop();
     setState(() {});
   }

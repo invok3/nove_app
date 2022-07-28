@@ -21,12 +21,12 @@ class _AboutPageState extends State<AboutPage> {
       future: _getDocument(),
       builder: (context, snapshot) {
         if (snapshot.connectionState != ConnectionState.done) {
-          return Center(child: CircularProgressIndicator());
+          return const Center(child: CircularProgressIndicator());
         } else if (_document != null) {
           return SingleChildScrollView(
             child: quill.QuillEditor(
               controller: quill.QuillController(
-                selection: TextSelection(baseOffset: 0, extentOffset: 0),
+                selection: const TextSelection(baseOffset: 0, extentOffset: 0),
                 document: _document!,
               ),
               readOnly: true,
@@ -60,7 +60,7 @@ class _AboutPageState extends State<AboutPage> {
         _document = doc;
       });
     } catch (e) {
-      debugPrint("AboutPage._getDocument: " + e.toString());
+      debugPrint("AboutPage._getDocument: $e");
       return;
     }
   }

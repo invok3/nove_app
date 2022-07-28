@@ -31,15 +31,15 @@ class _StoryPageState extends State<StoryPage> {
                 color: Provider.of<ThemeProvider>(context).selectedColor,
                 blurRadius: 6,
                 spreadRadius: -2,
-                offset: Offset(0, 0))
+                offset: const Offset(0, 0))
           ],
           color: Theme.of(context).canvasColor,
         ),
-        margin: EdgeInsets.all(12),
+        margin: const EdgeInsets.all(12),
         clipBehavior: Clip.antiAlias,
         child: Material(
           child: Padding(
-            padding: EdgeInsets.all(10),
+            padding: const EdgeInsets.all(10),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -75,7 +75,7 @@ class _StoryPageState extends State<StoryPage> {
                                 .setStoryID(prevStoryID);
                             //debugPrint(nextCatID + ":" + nextStoryID);
                           },
-                    icon: Icon(Icons.arrow_back_ios)),
+                    icon: const Icon(Icons.arrow_back_ios)),
                 IconButton(
                     onPressed: () => _bookmark(),
                     icon: Icon(
@@ -90,12 +90,12 @@ class _StoryPageState extends State<StoryPage> {
                             Provider.of<Reading>(context).storyID)
                         ? Icons.favorite
                         : Icons.favorite_outline)),
-                IconButton(onPressed: () {}, icon: Icon(Icons.share)),
+                IconButton(onPressed: () {}, icon: const Icon(Icons.share)),
                 IconButton(
                     onPressed: () {
                       _textScale();
                     },
-                    icon: Icon(Icons.text_fields)),
+                    icon: const Icon(Icons.text_fields)),
                 IconButton(
                     onPressed: Provider.of<ContentProvider>(context,
                                     listen: false)
@@ -128,7 +128,7 @@ class _StoryPageState extends State<StoryPage> {
                                 .setStoryID(nextStoryID);
                             //debugPrint(nextCatID + ":" + nextStoryID);
                           },
-                    icon: Icon(Icons.arrow_forward_ios)),
+                    icon: const Icon(Icons.arrow_forward_ios)),
               ],
             ),
           ),
@@ -136,7 +136,7 @@ class _StoryPageState extends State<StoryPage> {
       ),
       body: SafeArea(
         child: CustomScrollView(
-          physics: BouncingScrollPhysics(),
+          physics: const BouncingScrollPhysics(),
           slivers: [
             SliverAppBar(
               elevation: 0,
@@ -144,7 +144,7 @@ class _StoryPageState extends State<StoryPage> {
               stretch: true,
               expandedHeight: MediaQuery.of(context).size.width * .66,
               flexibleSpace: FlexibleSpaceBar(
-                stretchModes: [
+                stretchModes: const [
                   StretchMode.blurBackground,
                   StretchMode.zoomBackground
                 ],
@@ -179,7 +179,7 @@ class _StoryPageState extends State<StoryPage> {
                     child: quill.QuillEditor(
                       controller: quill.QuillController(
                         selection:
-                            TextSelection(baseOffset: 0, extentOffset: 0),
+                            const TextSelection(baseOffset: 0, extentOffset: 0),
                         document: _getDocument(context),
                       ),
                       readOnly: true,

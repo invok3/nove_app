@@ -19,11 +19,11 @@ class _CategoriesPageState extends State<CategoriesPage> {
   Widget build(BuildContext context) {
     return RefreshIndicator(
       child: Provider.of<ContentProvider>(context).content == false
-          ? Center(
+          ? const Center(
               child: CircularProgressIndicator(),
             )
           : SingleChildScrollView(
-              physics: AlwaysScrollableScrollPhysics(),
+              physics: const AlwaysScrollableScrollPhysics(),
               child: Provider.of<ContentProvider>(context).categories!.isEmpty
                   ? SizedBox(
                       height: MediaQuery.of(context).size.height -

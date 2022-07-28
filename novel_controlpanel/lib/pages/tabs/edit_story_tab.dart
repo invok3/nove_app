@@ -114,7 +114,7 @@ class _EditStoryTabState extends State<EditStoryTab> {
                               borderRadius: BorderRadius.circular(4)),
                           child: quill.QuillEditor(
                             embedBuilder:
-                                (context, controller, node, readOnly) {
+                                (context, controller, node, readOnly, _) {
                               debugPrint(node.value.data.toString());
                               //return ScaleableImage(src: node.value.data);
                               return Image.network(
@@ -294,6 +294,9 @@ class _EditStoryTabState extends State<EditStoryTab> {
         _error = "حدث خطأ أثناء الإتصال بقاعدة البيانات";
       });
     } else {
+      if (!mounted) {
+        return;
+      }
       Navigator.pop(context);
     }
   }

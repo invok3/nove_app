@@ -17,22 +17,14 @@ import 'package:provider/provider.dart';
 
 Future<void> _backgroundMessageHandler(RemoteMessage message) async {
   await Firebase.initializeApp(
-    options: FirebaseOptions(
-      // apiKey: "AIzaSyCuCjsAonzEFKfdT6RueEnvo8C-it97hqA",
-      // authDomain: "novel-app-1.firebaseapp.com",
-      // projectId: "novel-app-1",
-      // storageBucket: "novel-app-1.appspot.com",
-      // messagingSenderId: "639413996910",
-      // appId: "1:639413996910:web:e7992c7f27f5dc86df457f"
-
-      apiKey: "AIzaSyAM9Fzs_tKzRYf2RoR1VRcpQvyKRO3-m0Y",
-      authDomain: "novel-c00ac.firebaseapp.com",
-      projectId: "novel-c00ac",
-      storageBucket: "novel-c00ac.appspot.com",
-      messagingSenderId: "277214592930",
-      appId: "1:277214592930:web:769293a04d64a2e01afcfb",
-      measurementId: "G-K8Z4653NGM",
-    ),
+    options: const FirebaseOptions(
+        apiKey: "AIzaSyBNnu0cZqKT8Tx4rTjMRNHmgRJOPmjAaPE",
+        authDomain: "novel-app-f1572.firebaseapp.com",
+        projectId: "novel-app-f1572",
+        storageBucket: "novel-app-f1572.appspot.com",
+        messagingSenderId: "521139126077",
+        appId: "1:521139126077:web:ca6acb277d1e785b800f54",
+        measurementId: "G-Q5EYTB38B9"),
   );
   debugPrint("Background Message: ${message.toString()}");
 }
@@ -41,22 +33,14 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   await Firebase.initializeApp(
-    options: FirebaseOptions(
-        apiKey: "AIzaSyCuCjsAonzEFKfdT6RueEnvo8C-it97hqA",
-        authDomain: "novel-app-1.firebaseapp.com",
-        projectId: "novel-app-1",
-        storageBucket: "novel-app-1.appspot.com",
-        messagingSenderId: "639413996910",
-        appId: "1:639413996910:web:e7992c7f27f5dc86df457f"
-
-        // apiKey: "AIzaSyAM9Fzs_tKzRYf2RoR1VRcpQvyKRO3-m0Y",
-        // authDomain: "novel-c00ac.firebaseapp.com",
-        // projectId: "novel-c00ac",
-        // storageBucket: "novel-c00ac.appspot.com",
-        // messagingSenderId: "277214592930",
-        // appId: "1:277214592930:web:769293a04d64a2e01afcfb",
-        // measurementId: "G-K8Z4653NGM",
-        ),
+    options: const FirebaseOptions(
+        apiKey: "AIzaSyBNnu0cZqKT8Tx4rTjMRNHmgRJOPmjAaPE",
+        authDomain: "novel-app-f1572.firebaseapp.com",
+        projectId: "novel-app-f1572",
+        storageBucket: "novel-app-f1572.appspot.com",
+        messagingSenderId: "521139126077",
+        appId: "1:521139126077:web:ca6acb277d1e785b800f54",
+        measurementId: "G-Q5EYTB38B9"),
   );
   debugPrint(await FirebaseMessaging.instance.getToken());
   FirebaseMessaging.instance.onTokenRefresh.listen((event) {
@@ -75,7 +59,7 @@ Future<void> main() async {
       ChangeNotifierProvider<Reading>(create: (_) => Reading()),
       ChangeNotifierProvider<SavedData>(create: (_) => SavedData()),
     ],
-    child: MyApp(),
+    child: const MyApp(),
   ));
 }
 
@@ -86,7 +70,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      localizationsDelegates: [
+      localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate
@@ -117,20 +101,20 @@ class MyApp extends StatelessWidget {
             color: Provider.of<ThemeProvider>(context).selectedColor),
       ),
       themeMode: Provider.of<ThemeProvider>(context).selectedThemeMode,
-      supportedLocales: [
+      supportedLocales: const [
         Locale("en", "US"),
         Locale('ar', 'SA'),
       ],
       routes: {
-        "/": (context) => StateManager(),
+        "/": (context) => const StateManager(),
         StoryPage.routeName: (context) => Theme(
               data: Theme.of(context).copyWith(
                   textTheme:
                       Theme.of(context).textTheme.apply(fontFamily: 'Noto')),
-              child: StoryPage(),
+              child: const StoryPage(),
             ),
-        SettingsPage.routeName: (context) => SettingsPage(),
-        SubmitPage.routeName: (context) => SubmitPage(),
+        SettingsPage.routeName: (context) => const SettingsPage(),
+        SubmitPage.routeName: (context) => const SubmitPage(),
       },
       initialRoute: "/",
     );

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-Locale defaultLocal = Locale("ar", "SA");
+Locale defaultLocal = const Locale("ar", "SA");
 // MaterialColor kPrimaryColor = Colors.deepPurple;
 // MaterialColor kSecondaryColor = Colors.purple;
 // MaterialAccentColor kPrimaryAccent = Colors.deepPurpleAccent;

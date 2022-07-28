@@ -29,16 +29,16 @@ class _SettingsPageState extends State<SettingsPage> {
                       onPressed: () {
                         Navigator.pop(context);
                       },
-                      icon: Icon(Icons.arrow_back_ios)),
-                  Spacer(),
+                      icon: const Icon(Icons.arrow_back_ios)),
+                  const Spacer(),
                   Text(
                     Translator.of(context, "Settings"),
                     style: Theme.of(context).textTheme.titleLarge!.copyWith(
                         color:
                             Provider.of<ThemeProvider>(context).selectedColor),
                   ),
-                  Spacer(),
-                  IconButton(
+                  const Spacer(),
+                  const IconButton(
                       onPressed: null,
                       icon: Icon(
                         Icons.arrow_back_ios_new,
@@ -52,7 +52,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 children: [
                   ListTile(
                     onTap: () => _selectLanguage(),
-                    leading: Icon(Icons.language),
+                    leading: const Icon(Icons.language),
                     title: Text(Translator.of(context, "Language")),
                     subtitle: Text(
                         (Provider.of<LocalProvider>(context).selectedLocal ??
@@ -61,11 +61,11 @@ class _SettingsPageState extends State<SettingsPage> {
                                 "en"
                             ? "English"
                             : "العربية"),
-                    trailing: Icon(Icons.keyboard_arrow_down),
+                    trailing: const Icon(Icons.keyboard_arrow_down),
                   ),
                   ListTile(
                     onTap: () => _selectTheme(),
-                    leading: Icon(Icons.light_mode),
+                    leading: const Icon(Icons.light_mode),
                     title: Text(Translator.of(context, "ThemeMode")),
                     subtitle: Text(
                         Provider.of<ThemeProvider>(context).selectedThemeMode ==
@@ -76,11 +76,11 @@ class _SettingsPageState extends State<SettingsPage> {
                                     ThemeMode.dark
                                 ? Translator.of(context, "Dark")
                                 : Translator.of(context, "Light")),
-                    trailing: Icon(Icons.keyboard_arrow_down),
+                    trailing: const Icon(Icons.keyboard_arrow_down),
                   ),
                   ListTile(
                     onTap: () => _selectColor(),
-                    leading: Icon(Icons.colorize),
+                    leading: const Icon(Icons.colorize),
                     title: Text(Translator.of(context, "Color")),
                     subtitle: Text(Translator.of(context, "ThemeColor")),
                     trailing: Container(
@@ -93,22 +93,22 @@ class _SettingsPageState extends State<SettingsPage> {
                     ),
                   ),
                   ListTile(
-                    leading: Icon(Icons.share),
+                    leading: const Icon(Icons.share),
                     title: Text(Translator.of(context, "ShareTitle")),
                     subtitle: Text(Translator.of(context, "ShareAppText")),
                   ),
                   ListTile(
-                    leading: Icon(Icons.star_rate),
+                    leading: const Icon(Icons.star_rate),
                     title: Text(Translator.of(context, "rateUsTitle")),
                   ),
                   ListTile(
                     onTap: () =>
                         Navigator.pushNamed(context, SubmitPage.routeName),
-                    leading: Icon(Icons.email),
+                    leading: const Icon(Icons.email),
                     title: Text(Translator.of(context, "contactUsTitle")),
                   ),
                   ListTile(
-                    leading: Icon(Icons.privacy_tip),
+                    leading: const Icon(Icons.privacy_tip),
                     title: Text(Translator.of(context, "privacyPolicyTitle")),
                   ),
                 ],
@@ -130,19 +130,19 @@ class _SettingsPageState extends State<SettingsPage> {
           mainAxisSize: MainAxisSize.min,
           children: [
             ListTile(
-              onTap: () => Navigator.pop(context, Locale("en", "US")),
+              onTap: () => Navigator.pop(context, const Locale("en", "US")),
               title: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: [
+                children: const [
                   Text("English"),
                 ],
               ),
             ),
             ListTile(
-              onTap: () => Navigator.pop(context, Locale("ar", "SA")),
+              onTap: () => Navigator.pop(context, const Locale("ar", "SA")),
               title: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: [
+                children: const [
                   Text("العربية"),
                 ],
               ),
@@ -151,6 +151,9 @@ class _SettingsPageState extends State<SettingsPage> {
         ),
       ),
     );
+    if (!mounted) {
+      return;
+    }
     locale != null
         ? Provider.of<LocalProvider>(context, listen: false)
             .toggleLocale(locale)
@@ -200,6 +203,9 @@ class _SettingsPageState extends State<SettingsPage> {
     if (x == null) {
       return;
     } else {
+      if (!mounted) {
+        return;
+      }
       Provider.of<ThemeProvider>(context, listen: false).toggleTheme(x);
     }
   }
@@ -259,6 +265,9 @@ class _SettingsPageState extends State<SettingsPage> {
         ),
       ),
     );
+    if (!mounted) {
+      return;
+    }
     color != null
         ? Provider.of<ThemeProvider>(context, listen: false).toggleColor(color)
         : null;
@@ -268,7 +277,7 @@ class _SettingsPageState extends State<SettingsPage> {
     return InkWell(
         onTap: () => Navigator.pop(context, color),
         child: Padding(
-          padding: EdgeInsets.all(8),
+          padding: const EdgeInsets.all(8),
           child: Container(
             width: 36,
             height: 36,

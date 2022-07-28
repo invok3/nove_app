@@ -52,7 +52,7 @@ abstract class FirebaseAPI {
       var doc = docLimit.docs.last;
       return doc["document"];
     } catch (e) {
-      debugPrint("FirebaseAPI.getAboutDoc: " + e.toString());
+      debugPrint("FirebaseAPI.getAboutDoc: $e");
       return null;
     }
   }

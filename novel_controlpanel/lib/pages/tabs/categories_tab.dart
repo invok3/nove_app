@@ -53,9 +53,10 @@ class _CategoriesTabState extends State<CategoriesTab> {
                       color: Colors.white,
                     ),
                     onPressed: () {
-                      Navigator.pushNamed(context, EditCategoryTab.routeName).then((value) {setState(() {
-                        
-                      });});
+                      Navigator.pushNamed(context, EditCategoryTab.routeName)
+                          .then((value) {
+                        setState(() {});
+                      });
                     },
                     label: Text(
                       "إضافة",
@@ -72,28 +73,42 @@ class _CategoriesTabState extends State<CategoriesTab> {
                       return Center(
                         child: CircularProgressIndicator(),
                       );
-                    } else if(snapshot.data == null){
-                      return Center(child: Row(mainAxisSize: MainAxisSize.min, children: [
-                        Icon(Icons.error_outline, color: Colors.red[700],),
-                        Text("حدث خطأ اثناء التصال بقاعدة البيانات", style: TextStyle(color: Colors.red[700]),)
-                      ], ));
-                    }else{
+                    } else if (snapshot.data == null) {
+                      return Center(
+                          child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Icon(
+                            Icons.error_outline,
+                            color: Colors.red[700],
+                          ),
+                          Text(
+                            "حدث خطأ اثناء التصال بقاعدة البيانات",
+                            style: TextStyle(color: Colors.red[700]),
+                          )
+                        ],
+                      ));
+                    } else {
                       var mList = snapshot.data as List<Map<String, String>>;
-                      return mList.isEmpty ? Center(child: Text("لم تقم بأضافة أجزاء"),) : SingleChildScrollView(
-                        controller: ScrollController(),
-                        padding: EdgeInsets.all(8),
-                        child: Column(
-                            children: mList
-                                .map((e) => mCard(
-                                      id: e["id"] ?? "",
-                                      title: e["title"] ?? "غير معروف",
-                                      subtitle: e["description"],
-                                      image: e["image"],
-                                      width: x,
-                                      height: y,
-                                    ))
-                                .toList()),
-                      );
+                      return mList.isEmpty
+                          ? Center(
+                              child: Text("لم تقم بأضافة أجزاء"),
+                            )
+                          : SingleChildScrollView(
+                              controller: ScrollController(),
+                              padding: EdgeInsets.all(8),
+                              child: Column(
+                                  children: mList
+                                      .map((e) => mCard(
+                                            id: e["id"] ?? "",
+                                            title: e["title"] ?? "غير معروف",
+                                            subtitle: e["description"],
+                                            image: e["image"],
+                                            width: x,
+                                            height: y,
+                                          ))
+                                      .toList()),
+                            );
                     }
                   },
                 ),
@@ -136,6 +151,7 @@ class _CategoriesTabState extends State<CategoriesTab> {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   title,
@@ -152,7 +168,6 @@ class _CategoriesTabState extends State<CategoriesTab> {
                   style: Theme.of(context).textTheme.caption,
                 ),
               ],
-              crossAxisAlignment: CrossAxisAlignment.start,
             ),
           ),
         ),
@@ -162,9 +177,11 @@ class _CategoriesTabState extends State<CategoriesTab> {
             InkWell(
                 borderRadius: BorderRadius.circular(100),
                 onTap: () {
-                  Navigator.of(context).pushNamed(EditCategoryTab.routeName, arguments: id).then((value) {setState(() {
-                    
-                  });});
+                  Navigator.of(context)
+                      .pushNamed(EditCategoryTab.routeName, arguments: id)
+                      .then((value) {
+                    setState(() {});
+                  });
                 },
                 child: Padding(
                   padding:
@@ -177,15 +194,23 @@ class _CategoriesTabState extends State<CategoriesTab> {
                   bool? confirmation = await showDialog(
                       context: context,
                       builder: (context) => AlertDialog(
-                        content: Text("حذف الجزء, لا يمكن التراجع!"),
+                            content: Text("حذف الجزء, لا يمكن التراجع!"),
                             actions: [
-                              TextButton(onPressed: () {Navigator.pop(context, true)}, child: Text("موافق")),
-                              TextButton(onPressed: () {Navigator.pop(context)}, child: Text("رجوع")),
+                              TextButton(
+                                  onPressed: () {
+                                    Navigator.pop(context, true);
+                                  },
+                                  child: Text("موافق")),
+                              TextButton(
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                  child: Text("رجوع")),
                             ],
                           ));
-                          if(confirmation != true) {
-                            return;
-                          }
+                  if (confirmation != true) {
+                    return;
+                  }
                   await FirebaseFirestore.instance
                       .collection("categories")
                       .doc(id)

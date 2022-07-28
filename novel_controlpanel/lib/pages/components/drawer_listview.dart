@@ -101,8 +101,8 @@ class _MyDrawerListViewState extends State<MyDrawerListView> {
                   builder: (context, snapshot) {
                     if (snapshot.connectionState != ConnectionState.done) {
                       return Row(
-                        children: [CircularProgressIndicator()],
                         mainAxisAlignment: MainAxisAlignment.center,
+                        children: [CircularProgressIndicator()],
                       );
                     } else {
                       Navigator.pop(context, snapshot.data.toString());
@@ -112,6 +112,9 @@ class _MyDrawerListViewState extends State<MyDrawerListView> {
                 ),
               ),
             );
+            if (!mounted) {
+              return;
+            }
             Navigator.pushNamed(context, AboutTab.routeName,
                 arguments: docString);
           },

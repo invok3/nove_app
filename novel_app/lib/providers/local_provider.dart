@@ -13,10 +13,10 @@ class LocalProvider extends ChangeNotifier {
     String? savedLocale = sp.getString("savedLocale");
     switch (savedLocale) {
       case "ar":
-        selectedLocal = Locale("ar", "SA");
+        selectedLocal = const Locale("ar", "SA");
         break;
       case "en":
-        selectedLocal = Locale("en", "US");
+        selectedLocal = const Locale("en", "US");
         break;
       default:
         selectedLocal = defaultLocal;

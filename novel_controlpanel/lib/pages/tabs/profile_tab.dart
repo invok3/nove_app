@@ -103,6 +103,9 @@ class _ProfileTabState extends State<ProfileTab> {
                                 content: Text(x.message ?? "Unknown Error!")));
                             return;
                           }
+                          if (!mounted) {
+                            return;
+                          }
                           ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(content: Text("تم تغيير كلمة المرور")));
                         },
